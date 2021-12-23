@@ -7,15 +7,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Story</title>
     <link rel="stylesheet" href="./src/css/themestyle.css" />
+    <link rel="stylesheet" href="./src/css/cardstyle.css" />
 </head>
 
 <body>
     <div id="progress"></div>
-
+    <div id="desc-meter" style="display:none">
+        <a href="" class="card">
+            <img src="https://secure.img2.wfrcdn.com/lf/47/hash/19291/14959461/1/.jpg" class="card__image" alt="" />
+            <div class="card__overlay">
+                <div class="card__header">
+                    <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
+                    <img class="card__thumb" src="https://secure.img2.wfrcdn.com/lf/47/hash/19291/14959461/1/.jpg" alt="" />
+                    <div class="card__header-text">
+                        <h3 class="card__title">Jessica Parker</h3>
+                        <span class="card__status">1 hour ago</span>
+                    </div>
+                </div>
+                <p class="card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, blanditiis?</p>
+            </div>
+        </a>
+    </div>
     <div id="dialog">
         <div id="typed">Hello</div>
     </div>
-
+    <script type="text/javascript" src="./src/js/helper/includehtml.js"></script>
     <script type="text/javascript" src="./src/js/three/three.min.js"></script>
     <script type="text/javascript" src="./src/js/panolens/panolens.min.js"></script>
     <script type="text/javascript" src="./src/js/typed.min.js"></script>

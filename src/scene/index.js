@@ -21,33 +21,23 @@ var paragraphs = {
 
 // Patch for typed.js of cutting back-to-back words
 for (var section in paragraphs) {
-
     if (paragraphs.hasOwnProperty(section)) {
-
         paragraphs[section].unshift('');
         paragraphs[section].push('');
-
     }
-
 }
 
 function delayExecute(func, delay) {
-
     setTimeout(func, delay);
-
 }
 
 function onLoad() {
-
     type(paragraphs.welcome, onWelcomeComplete, 2000);
-
 }
 
 function onEnter(event) {
-
     progressElement.style.width = 0;
     progressElement.classList.remove('finish');
-
 }
 
 function onProgress(event) {
@@ -56,59 +46,44 @@ function onProgress(event) {
     if (progress === 100) {
         progressElement.classList.add('finish');
     }
-
 }
 
 function onWelcomeComplete() {
-
     delayExecute(meterInfospot.focus.bind(meterInfospot), tweeningDelay);
     type(paragraphs.meter, onMeterTourComplete);
-
 }
 
 function onMeterTourComplete() {
-
     delayExecute(valveInfospot.focus.bind(valveInfospot), tweeningDelay);
     type(paragraphs.valve, onValveTourComplete);
-
 }
 
 function onValveTourComplete() {
-
     delayExecute(seatInfospot.focus.bind(seatInfospot), tweeningDelay);
     type(paragraphs.seat, onSeatTourComplete);
-
 }
 
 function onSeatTourComplete() {
-
     delayExecute(topboxInfospot.focus.bind(topboxInfospot), tweeningDelay);
     type(paragraphs.box, onTopboxTourComplete);
-
 }
 
 function onTopboxTourComplete() {
-
     delayExecute(endingInfospot.focus.bind(endingInfospot), tweeningDelay);
     type(paragraphs.ending, function() { viewer.OrbitControls.enabled = true; });
-
 }
 
 function type(stringArray, onComplete, startDelay) {
-
     onComplete = onComplete || function() {};
     startDelay = startDelay >= 0 ? startDelay : typeStartDelay;
 
     typed = new Typed("#typed", {
-
         strings: stringArray,
         typeSpeed: typeSpeed,
         showCursor: false,
         startDelay: startDelay,
         onComplete: onComplete
-
     });
-
 }
 
 // Infospots
@@ -124,7 +99,8 @@ seatInfospot.position.set(1934.61, -2611.69, -3792.91);
 topboxInfospot.position.set(-3348.82, 3705.92, 45.54);
 endingInfospot.position.set(-3461.4, -3592.37, -241.38);
 
-meterInfospot.addHoverText('Speedometer', 50);
+//meterInfospot.addHoverText('Speedometer', 50);
+meterInfospot.addHoverElement(document.getElementById('desc-meter'), 50)
 valveInfospot.addHoverText('Valve', 50);
 seatInfospot.addHoverText('Seat', 50);
 topboxInfospot.addHoverText('Box', 50);
