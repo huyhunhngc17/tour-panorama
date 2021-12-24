@@ -1,6 +1,5 @@
-var panorama, viewer, typed, typed;
+import Hint from './hint/hint'
 
-var meterInfospot, valveInfospot, seatInfospot, topboxInfospot, endingInfospot;
 
 var progressElement = document.querySelector('#progress');
 
@@ -17,7 +16,9 @@ var paragraphs = {
     ending: ['This is our last stop', 'Please continue your journey with this wonder train...']
 };
 
-for (var section in paragraphs) {
+var Infospot = [Hint("hallASpot", 1, 1, 1, 1, "w")]
+
+for (let section in paragraphs) {
     if (paragraphs.hasOwnProperty(section)) {
         paragraphs[section].unshift('');
         paragraphs[section].push('');
@@ -101,13 +102,13 @@ seatInfospot.addHoverText('Seat', 50);
 topboxInfospot.addHoverText('Box', 50);
 
 // Panorama
-panorama = new PANOLENS.ImagePanorama('../../../asset/dusty9000x4500.jpg');
+panorama = new PANOLENS.ImagePanorama('../../../asset/StreetView360.jpg');
 panorama.addEventListener('progress', onProgress);
 panorama.addEventListener('load', onLoad);
 panorama.addEventListener('enter', onEnter);
 panorama.add(meterInfospot, valveInfospot, seatInfospot, topboxInfospot, endingInfospot);
 
 // Viewer
-viewer = new PANOLENS.Viewer({ controlBar: false, initialLookAt: new THREE.Vector3(0, 0, 5000) });
+viewer = new PANOLENS.Viewer({ initialLookAt: new THREE.Vector3(0, 0, 5000) });
 viewer.OrbitControls.enabled = false;
 viewer.add(panorama);
