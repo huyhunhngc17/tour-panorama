@@ -9,17 +9,14 @@ var tweeningDelay = 300,
     typeSpeed = 50;
 
 var paragraphs = {
-
     welcome: ['Panolens Presents', 'A Journey to a <strong>Train</strong>', 'Here we go'],
     meter: ['One of the common meter that you can see on a train', 'it is not specially eye-catching but it just can get your attention', 'it indicates how fast the train is currently going', 'Let us continue'],
     valve: ['A Valve', 'solid looking and quite decent color', 'here shows the evidence that time would leaves marks on everything', 'same thing applies to our face...'],
     seat: ['Alright. Here we have a seat. The green pad looks quite comfortable', 'when you are on a train', 'OK. Move on to next one'],
     box: ['There is a box over there', 'probably some fuse or electronic devices', 'Hmmmm............', 'Anyway', 'Let\'s keep moving'],
     ending: ['This is our last stop', 'Please continue your journey with this wonder train...']
-
 };
 
-// Patch for typed.js of cutting back-to-back words
 for (var section in paragraphs) {
     if (paragraphs.hasOwnProperty(section)) {
         paragraphs[section].unshift('');
@@ -86,12 +83,11 @@ function type(stringArray, onComplete, startDelay) {
     });
 }
 
-// Infospots
 meterInfospot = new PANOLENS.Infospot();
 valveInfospot = new PANOLENS.Infospot();
 seatInfospot = new PANOLENS.Infospot();
 topboxInfospot = new PANOLENS.Infospot();
-endingInfospot = new PANOLENS.Infospot(10e-7); // Make it not visible
+endingInfospot = new PANOLENS.Infospot(10e-7);
 
 meterInfospot.position.set(4610.04, 1280.07, 1431.29);
 valveInfospot.position.set(4637.61, -798.12, -1671.24);
@@ -99,8 +95,7 @@ seatInfospot.position.set(1934.61, -2611.69, -3792.91);
 topboxInfospot.position.set(-3348.82, 3705.92, 45.54);
 endingInfospot.position.set(-3461.4, -3592.37, -241.38);
 
-//meterInfospot.addHoverText('Speedometer', 50);
-meterInfospot.addHoverElement(document.getElementById('desc-meter'), 50)
+meterInfospot.addHoverElement(document.getElementById('desc-meter'), 200)
 valveInfospot.addHoverText('Valve', 50);
 seatInfospot.addHoverText('Seat', 50);
 topboxInfospot.addHoverText('Box', 50);

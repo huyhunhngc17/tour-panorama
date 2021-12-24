@@ -1,0 +1,35 @@
+{
+    "welcome": [
+        "Panolens Presents",
+        "A Journey to a <strong>Train</strong>",
+        "Here we go"
+    ],
+    "meter": [
+        "One of the common meter that you can see on a train",
+        "it is not specially eye-catching but it just can get your attention",
+        "it indicates how fast the train is currently going",
+        "Let us continue"
+    ],
+    "valve": [
+        "A Valve",
+        "solid looking and quite decent color",
+        "here shows the evidence that time would leaves marks on everything",
+        "same thing applies to our face..."
+    ],
+    "seat": [
+        "Alright. Here we have a seat. The green pad looks quite comfortable",
+        "when you are on a train",
+        "OK. Move on to next one"
+    ],
+    "box": [
+        "There is a box over there",
+        "probably some fuse or electronic devices",
+        "Hmmmm............",
+        "Anyway",
+        "Let's keep moving"
+    ],
+    "ending": [
+        "This is our last stop",
+        "Please continue your journey with this wonder train..."
+    ]
+}
