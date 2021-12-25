@@ -52,3 +52,11 @@ a:visited {
 #progress.finish {
     opacity: 0;
 }
+
+#compassplace {
+    position: fixed;
+    right: 23px;
+    z-index: 200!important;
+    height: 100px!important;
+    bottom: 50%;
+}

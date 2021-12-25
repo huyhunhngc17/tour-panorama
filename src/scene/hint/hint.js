@@ -9,5 +9,3 @@ function Hint(name, positionX, positionY, positionZ, infoType, tag, endState) {
 Hint.prototype.describe = function() {
     return this.name;
 };
-
-module.exports = Hint;

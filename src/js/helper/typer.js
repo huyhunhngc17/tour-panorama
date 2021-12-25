@@ -13,3 +13,7 @@ var typer = function(stringArray, onComplete, startDelay) {
     });
 
 }
+
+var delayExecute = function(func, delay) {
+    setTimeout(func, delay);
+}

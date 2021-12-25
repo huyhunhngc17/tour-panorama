@@ -1,14 +1,6 @@
-import Hint from './hint/hint'
-
-
 var progressElement = document.querySelector('#progress');
-
-var tweeningDelay = 300,
-    typeStartDelay = 1000,
-    typeSpeed = 50;
-
 var paragraphs = {
-    welcome: ['Panolens Presents', 'A Journey to a <strong>Train</strong>', 'Here we go'],
+    welcome: ['DUT Presents', 'A Journey to a <strong>University</strong>', 'Here we go'],
     meter: ['One of the common meter that you can see on a train', 'it is not specially eye-catching but it just can get your attention', 'it indicates how fast the train is currently going', 'Let us continue'],
     valve: ['A Valve', 'solid looking and quite decent color', 'here shows the evidence that time would leaves marks on everything', 'same thing applies to our face...'],
     seat: ['Alright. Here we have a seat. The green pad looks quite comfortable', 'when you are on a train', 'OK. Move on to next one'],
@@ -25,12 +17,8 @@ for (let section in paragraphs) {
     }
 }
 
-function delayExecute(func, delay) {
-    setTimeout(func, delay);
-}
-
 function onLoad() {
-    type(paragraphs.welcome, onWelcomeComplete, 2000);
+    typer(paragraphs.welcome, onWelcomeComplete, 2000);
 }
 
 function onEnter(event) {
@@ -47,68 +35,73 @@ function onProgress(event) {
 }
 
 function onWelcomeComplete() {
-    delayExecute(meterInfospot.focus.bind(meterInfospot), tweeningDelay);
-    type(paragraphs.meter, onMeterTourComplete);
+    delayExecute(hallAInfospot.focus.bind(hallAInfospot), tweeningDelay);
+    typer(paragraphs.meter, onMeterTourComplete);
 }
 
 function onMeterTourComplete() {
-    delayExecute(valveInfospot.focus.bind(valveInfospot), tweeningDelay);
-    type(paragraphs.valve, onValveTourComplete);
+    delayExecute(hallBInfospot.focus.bind(hallBInfospot), tweeningDelay);
+    typer(paragraphs.valve, onValveTourComplete);
 }
 
 function onValveTourComplete() {
-    delayExecute(seatInfospot.focus.bind(seatInfospot), tweeningDelay);
-    type(paragraphs.seat, onSeatTourComplete);
+    delayExecute(hallCInfospot.focus.bind(hallCInfospot), tweeningDelay);
+    typer(paragraphs.seat, onSeatTourComplete);
 }
 
 function onSeatTourComplete() {
-    delayExecute(topboxInfospot.focus.bind(topboxInfospot), tweeningDelay);
-    type(paragraphs.box, onTopboxTourComplete);
+    delayExecute(hallFInfospot.focus.bind(hallFInfospot), tweeningDelay);
+    typer(paragraphs.box, onTopboxTourComplete);
 }
 
 function onTopboxTourComplete() {
     delayExecute(endingInfospot.focus.bind(endingInfospot), tweeningDelay);
-    type(paragraphs.ending, function() { viewer.OrbitControls.enabled = true; });
+    typer(rparagraphs.ending, function() { viewer.OrbitControls.enabled = true; });
 }
 
-function type(stringArray, onComplete, startDelay) {
-    onComplete = onComplete || function() {};
-    startDelay = startDelay >= 0 ? startDelay : typeStartDelay;
+function onLoadTour() {
 
-    typed = new Typed("#typed", {
-        strings: stringArray,
-        typeSpeed: typeSpeed,
-        showCursor: false,
-        startDelay: startDelay,
-        onComplete: onComplete
-    });
 }
 
-meterInfospot = new PANOLENS.Infospot();
-valveInfospot = new PANOLENS.Infospot();
-seatInfospot = new PANOLENS.Infospot();
-topboxInfospot = new PANOLENS.Infospot();
+hallAInfospot = new PANOLENS.Infospot(400, '../../../asset/location_point.gif');
+hallBInfospot = new PANOLENS.Infospot(400, '../../../asset/location_point.gif');
+hallCInfospot = new PANOLENS.Infospot(400, '../../../asset/location_point.gif');
+hallFInfospot = new PANOLENS.Infospot(400, '../../../asset/location_point.gif');
 endingInfospot = new PANOLENS.Infospot(10e-7);
 
-meterInfospot.position.set(4610.04, 1280.07, 1431.29);
-valveInfospot.position.set(4637.61, -798.12, -1671.24);
-seatInfospot.position.set(1934.61, -2611.69, -3792.91);
-topboxInfospot.position.set(-3348.82, 3705.92, 45.54);
+hallAInfospot.position.set(4610.04, 1280.07, 1431.29);
+hallBInfospot.position.set(4637.61, -798.12, -1671.24);
+hallCInfospot.position.set(1934.61, -2611.69, -3792.91);
+hallFInfospot.position.set(-3348.82, 3705.92, 45.54);
 endingInfospot.position.set(-3461.4, -3592.37, -241.38);
 
-meterInfospot.addHoverElement(document.getElementById('desc-meter'), 200)
-valveInfospot.addHoverText('Valve', 50);
-seatInfospot.addHoverText('Seat', 50);
-topboxInfospot.addHoverText('Box', 50);
+hallAInfospot.addHoverElement(document.getElementById('desc-meter'), 200)
+hallBInfospot.addHoverText('Valve', 50);
+hallCInfospot.addHoverText('Seat', 50);
+hallFInfospot.addHoverText('Box', 50);
 
 // Panorama
 panorama = new PANOLENS.ImagePanorama('../../../asset/StreetView360.jpg');
 panorama.addEventListener('progress', onProgress);
 panorama.addEventListener('load', onLoad);
 panorama.addEventListener('enter', onEnter);
-panorama.add(meterInfospot, valveInfospot, seatInfospot, topboxInfospot, endingInfospot);
+panorama.add(hallAInfospot, hallBInfospot, hallCInfospot, hallFInfospot, endingInfospot);
 
 // Viewer
 viewer = new PANOLENS.Viewer({ initialLookAt: new THREE.Vector3(0, 0, 5000) });
-viewer.OrbitControls.enabled = false;
+viewer.OrbitControls.enabled = true;
 viewer.add(panorama);
+
+//add compat
+northposition_start = 90;
+viewer.getControl().addEventListener('change', () => {
+    y = viewer.getCamera().rotation.y;
+    if (y < 0) {
+        dy = THREE.Math.radToDeg(y + (2 * Math.PI));
+    } else {
+        dy = THREE.Math.radToDeg(y);
+    }
+    dy = Math.round(dy) - northposition_start;
+    console.log(dy)
+    $("#compassplace").css('transform', 'rotate(' + dy + 'deg)');
+});
