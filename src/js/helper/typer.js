@@ -1,19 +1,16 @@
-var typer = function(stringArray, onComplete, startDelay) {
+typer = (stringArray, onComplete, startDelay) => {
     onComplete = onComplete || function() {};
     startDelay = startDelay >= 0 ? startDelay : typeStartDelay;
 
     typed = new Typed("#typed", {
-
         strings: stringArray,
         typeSpeed: typeSpeed,
         showCursor: false,
         startDelay: startDelay,
         onComplete: onComplete
-
     });
-
 }
 
-var delayExecute = function(func, delay) {
+delayExecute = (func, delay) => {
     setTimeout(func, delay);
 }
