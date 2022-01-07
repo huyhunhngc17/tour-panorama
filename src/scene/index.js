@@ -57,9 +57,6 @@ viewer.getControl().addEventListener('change', () => {
 });
 
 function onInit() {
-    minimap = new floorPlan();
-    minimap.Init("../../../../asset/SodoGiangduong.gif");
-
     if (screen.width < 760) {
         $(document).ready(function() {
             $("#floor-plan").hide();
@@ -92,6 +89,7 @@ function onInit() {
 startId = 0;
 
 function onLoadTour() {
+    $("#spin-loading").hide();
     if (startId < infospot.length) {
         delayExecute(spotList[startId].focus.bind(spotList[startId]), tweeningDelay);
         typer(paragraphs[startId + 1], onLoadTour);
@@ -102,3 +100,12 @@ function onLoadTour() {
         $("#controls").show();
     }
 }
+
+function onChangePanorama(panorama) {
+
+}
+$(".btn").click(function() {
+    $(".input").toggleClass("active").focus;
+    $(this).toggleClass("animate");
+    $(".input").val("");
+});
