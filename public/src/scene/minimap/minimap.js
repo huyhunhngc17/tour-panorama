@@ -13,13 +13,16 @@ function latLng(x, y) {
     return lngLat(y, x);
 }
 
-function onChangePanorama(panorama) {
-
+function onChangePanorama(viewer, targetPanorama) {
+	viewer.setPanorama(targetPanorama); 
 }
 
-function floorPlan(ground, panoramaViewer) {
+function floorPlan(ground, panoramaViewer, panoramas) {
     this.points = [];
     this.map = ground;
+	this.panoramaViewer = panoramaViewer;
+	this.panoramas = panoramas;
+
     this.Init = () => {
         this.points = [
             new mapPoint({ cx: 550, cy: 80 }, false),
@@ -37,10 +40,13 @@ function floorPlan(ground, panoramaViewer) {
     }
 
     this.draw = function() {
-        var bounds = [latLng(0, 0), latLng(800, 800)];
+        let bounds = [latLng(0, 0), latLng(800, 800)];
         L.imageOverlay(this.map, bounds).addTo(map);
         this.points.forEach(point => {
-            point.drawPoint()
+			point.setOnClicked(() => {
+				onChangePanorama(this.panoramaViewer, panoramas[1])
+			})
+			point.drawPoint()
         })
         map.setView(latLng(550, 120), 0);
     }
@@ -49,6 +55,7 @@ function floorPlan(ground, panoramaViewer) {
 function mapPoint(position, isInside) {
     this.position = position
     this.isInside = isInside
+	this.clicked
 	this.markIcon = L.icon({
 		iconUrl: `${ORIGIN_ASSET_PATH}/ping_location.png`,
 		iconSize: [40, 40],
@@ -60,11 +67,16 @@ function mapPoint(position, isInside) {
         this.drawPoint()
     }
 
+	this.setOnClicked = (click) => {
+		this.clicked = click
+	}
+
     this.drawPoint = function() {
         let sol = latLng(this.position.cx, this.position.cy);
-        L.marker(sol, { icon: this.markIcon }).addTo(map).bindPopup('Mizar').on('click', function(e) {
-            alert(e.latlng);
-        });;
+        L.marker(sol, { icon: this.markIcon }).addTo(map).bindPopup('Mizar').on('click', (e) => {
+			//alert(e.latLng)
+            this.clicked();
+        });
     }
 }
 
