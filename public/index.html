@@ -14,49 +14,52 @@
 </head>
 
 <body>
-    <div id="progress"></div>
-    <div id="spin-loading"></div>
-
-    <div class="search-box" id="search-bar">
-        <input type="text" placeholder="Search" class="input">
-        <div class="btn">
-            <i class="fa fa-search" aria-hidden="true"></i>
-        </div>
-    </div>
-
-    <div id="floor-plan"></div>
-    <div id="compassplace" margin=20>
-        <img height=100 id="compass" src="./asset/compass.png">
-    </div>
-    <div id="desc-meter" style="display:none">
-        <div class="card">
-            <img height=100 src="./asset/bklogo.jpeg" class="card__image" alt="" />
-            <div class="card__overlay">
-                <div class="card__header">
-                    <svg class="card__arc"><path /></svg>
-                    <img class="card__thumb" src="./asset/bklogo.jpeg" alt="" />
-                    <div class="card__header-text">
-                        <h3 class="card__title">DHBK</h3>
-                        <span class="card__status">1 hour ago</span>
-                    </div>
-                </div>
-                <p class="card__description">DHBK</p>
-            </div>
-        </div>
-    </div>
-    <div id="dialog">
-        <div id="typed"></div>
-    </div>
-
-    <div id="controls" style="display:none">
-        <div class="ctrl" id="pan-up">&#9650;</div>
-        <div class="ctrl" id="pan-down">&#9660;</div>
-        <div class="ctrl" id="pan-left">&#9664;</div>
-        <div class="ctrl" id="pan-right">&#9654;</div>
-        <div class="ctrl" id="zoom-in">&plus;</div>
-        <div class="ctrl" id="zoom-out">&minus;</div>
-    </div>
-
+	<div class="search-box" id="search-bar">
+		<input type="text" placeholder="Search" class="input">
+		<div class="btn">
+			<i class="fa fa-search" aria-hidden="true"></i>
+		</div>
+	</div>
+	<div id="logo-dut" margin=20>
+		<img height=70 id="logo" src="./asset/bklogo.jpeg">
+	</div>
+	<div id="container">
+		<div id="progress"></div>
+		<div id="spin-loading"></div>
+		<div id="floor-plan"></div>
+		<div id="compassplace" margin=20>
+			<img height=100 id="compass" src="./asset/compass.png">
+		</div>
+		<div id="desc-meter" style="display:none">
+			<div class="card">
+				<img height=100 src="./asset/bklogo.jpeg" class="card__image" alt="" />
+				<div class="card__overlay">
+					<div class="card__header">
+						<svg class="card__arc"><path /></svg>
+						<img class="card__thumb" src="./asset/bklogo.jpeg" alt="" />
+						<div class="card__header-text">
+							<h3 class="card__title">DHBK</h3>
+							<span class="card__status">1 hour ago</span>
+						</div>
+					</div>
+					<p class="card__description">DHBK</p>
+				</div>
+			</div>
+		</div>
+		<div id="dialog">
+			<div id="typed"></div>
+		</div>
+	
+		<div id="controls" style="display:none">
+			<div class="ctrl" id="pan-up">&#9650;</div>
+			<div class="ctrl" id="pan-down">&#9660;</div>
+			<div class="ctrl" id="pan-left">&#9664;</div>
+			<div class="ctrl" id="pan-right">&#9654;</div>
+			<div class="ctrl" id="zoom-in">&plus;</div>
+			<div class="ctrl" id="zoom-out">&minus;</div>
+		</div>	
+	</div>
+   
     <script type="text/javascript" src="./src/js/lib/jquery.min.js"></script>
     <script type="text/javascript" src="./src/js/helper/includehtml.js"></script>
     <script type="text/javascript" src="./src/js/three/three.min.js"></script>
