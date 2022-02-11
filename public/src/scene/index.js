@@ -1,5 +1,6 @@
 //create viewer
-let viewer = new PANOLENS.Viewer({ initialLookAt: new THREE.Vector3(0, 0, 5000), autoRotateSpeed: 1, autoRotateActivationDuration: 5000 });
+container = document.querySelector ( '#container');
+let viewer = new PANOLENS.Viewer({ container: container, initialLookAt: new THREE.Vector3(0, 0, 5000), autoRotateSpeed: 1, autoRotateActivationDuration: 5000 });
 viewer.OrbitControls.enabled = false;
 
 //adding controller
@@ -56,8 +57,8 @@ viewer.getControl().addEventListener('change', () => {
 let paragraphs = [
     ['DUT Presents', 'A Journey to a <strong>University</strong>', 'Here we go'],
     ['Quyết định số 66/QĐ ngày 15/07/1975 thành lập Viện Đại học Đà Nẵng - là tiền thân của Trường Đại học Bách khoa Đà Nẵng', 'it is not specially eye-catching but it just can get your attention', 'it indicates how fast the train is currently going', 'Let us continue'],
-    ['AAA', 'AAA', 'AAA', 'AAA'],
-    ['AAA', 'AAA', 'AAA'],
+    ['AAA', 'BBB', 'CCC', 'DDD'],
+    ['AAA', 'BBB', 'CCC'],
     ['AAA', 'Hmmmm............', 'Anyway', 'Let\'s keep moving'],
     ['AAA', 'AAA']
 ];
@@ -71,9 +72,6 @@ let infospot = [
 ]
 
 let spotList = [];
-
-let minimap = new floorPlan(`${ORIGIN_ASSET_PATH}/Sodo2.png`, viewer)
-minimap.Init()
 
 function onEnter(event) {
     progressElement.style.width = 0;
@@ -106,14 +104,17 @@ panoramaAreaB.addEventListener('progress', onProgress);
 panoramaAreaTTHL = new PANOLENS.ImagePanorama(`${ORIGIN_ASSET_PATH}/${PANORAMA_PATH}/trungtamhoclieu.jpg`);
 panoramaAreaTTHL.addEventListener('progress', onProgress);
 
+panoramaAreaKD = new PANOLENS.ImagePanorama(`${ORIGIN_ASSET_PATH}/${PANORAMA_PATH}/khudien.jpg`);
+panoramaAreaKD.addEventListener('progress', onProgress);
+
+panoramas = [panorama, panoramaAreaA, panoramaAreaB, panoramaAreaTTHL, panoramaAreaKD]
+
 // Viewer
-viewer.add(panorama);
+viewer.add(panorama, panoramaAreaA, panoramaAreaB, panoramaAreaTTHL, panoramaAreaKD);
+let minimap = new floorPlan(`${ORIGIN_ASSET_PATH}/${FLOOR_PLAN_PATH_IMAGE}`, viewer, panoramas)
+minimap.Init()
 
 function onInit() {
-    if (screen.width < 760) {
-        toggleFloorPlan(false)
-    }
-
     for (let section in paragraphs) {
         if (paragraphs.hasOwnProperty(section)) {
             paragraphs[section].unshift('');
