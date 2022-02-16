@@ -65,10 +65,10 @@ let paragraphs = [
 
 let infospot = [
     new Hint("hallASpot", 4610.04, 1280.07, 1431.29, 0, "w"),
-    new Hint("hallBSpot", 4637.61, -798.12, -1671.24, 1, "w"),
-    new Hint("hallCSpot", 1934.61, -2611.69, -3792.91, 1, "w"),
-    new Hint("hallFSpot", -3348.82, 3705.92, 45.54, 1, "w"),
-    new Hint("hallEndSpot", -3461.4, -3592.37, -241.38, 1, "w"),
+    new Hint("hallBSpot", 4637.61, 798.12, 1671.24, 1, "w"),
+    new Hint("hallCSpot", 1934.61, 2611.69, 3792.91, 1, "w"),
+    new Hint("hallFSpot", 3348.82, 3705.92, 445.54, 1, "w"),
+    new Hint("hallEndSpot", 3461.4, 3592.37, 241.38, 1, "w"),
 ]
 
 let spotList = [];

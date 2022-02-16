@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Story</title>
+	<link rel="stylesheet" href="./src/css/themestyle.css" />
+	<link rel="stylesheet" href="./src/css/cardstyle.css" />
+	<link rel="stylesheet" href="./src/css/leaflet.css" />
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+<body>
+	<div id="container">
+		<div id="progress"></div>
+		<div id="floor-plan"></div>
+		<div id="compassplace" margin=20>
+			<img height=100 id="compass" src="./asset/compass.png">
+		</div>
+	</div>
+
+	<div id="comment-modal" class="modal">
+		<div class="modal__content">
+			<div class="container-comment">
+				<div class="row" align="left" style="height:300px;overflow:auto;">
+					<div class="col-6">
+						<div class="comment" id="comment-list">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-6">
+						<textarea id="input-comment" type="text" class="input" placeholder="Write a comment"></textarea>
+						<button onClick="addItem()" class='primaryContained float-right' type="submit">Add Comment</button>
+					</div>
+				</div>
+			</div>
+			<a href="#" class="modal__close">&times;</a>
+		</div>
+	</div>
+	<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
+	<script src="./src/data/data"></script>
+	<script type="text/javascript" src="./src/js/lib/jquery.min.js"></script>
+	<script type="text/javascript" src="./src/js/helper/includehtml.js"></script>
+	<script type="text/javascript" src="./src/js/three/three.min.js"></script>
+	<script type="text/javascript" src="./src/js/panolens/panolens.min.js"></script>
+	<script type="text/javascript" src="./src/js/typed.min.js"></script>
+	<script type="text/javascript" src="./src/scene/hint/hint.module.js"></script>
+	<script type="text/javascript" src="./src/util/config.js"></script>
+	<script type="text/javascript" src="./src/js/helper/typer.js"></script>
+	<script type="text/javascript" src="./src/js/lib/leaflet.js"></script>
+	<script type="text/javascript" src="./src/scene/minimap/minimap.js"></script>
+	<script type="text/javascript" src="./src/scene/extension.js"></script>
+	<script type="text/javascript" src="./src/scene/event.js"></script>
+	<script type="text/javascript" src="./src/scene/index.js"></script>
+
+</body>
+
+</html>
